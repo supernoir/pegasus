@@ -17,7 +17,7 @@ export const Menu = () => {
                     <Button component={Link} to="/admin/">
                         Administration
                     </Button>
-                    <Button component={Link} to="/admin/dashboard">
+                    <Button component={Link} to="/dashboard">
                         Dashboard
                     </Button>
                 </nav>

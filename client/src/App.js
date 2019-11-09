@@ -11,7 +11,7 @@ export default class App extends React.Component{
 				<Router>
 					<ScaleInput path="/" />
 					<Admin path="/admin" />
-					<Dashboard path="/admin/dashboard" />
+					<Dashboard path="/dashboard" />
 				</Router>
 			</div>
 		);
