@@ -20,7 +20,7 @@ module.exports = {
 			query : {
 				presets: [
 					"@babel/env",
-					"@babel/react"
+					"@babel/react",
 				]
 			},
 		},

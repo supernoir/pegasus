@@ -1,7 +1,6 @@
 import React from 'react';
 import RadioRange from './RadioRange';
 import * as config from '../../config/susconfig.json';
-import { compileScales } from '../../actions/compileScales';
 import { Box, Paper, Divider, Button } from '@material-ui/core';
 import { textAlign } from '@material-ui/system';
 
@@ -15,7 +14,7 @@ export default class Scale extends React.Component {
 	}
 	handleSubmit (evt) {
 		evt.preventDefault();
-		this.props.store.dispatch(compileScales(this.props.input));
+		//this.props.store.dispatch(compileScales(this.props.input));
 	}
 
 	render(){
