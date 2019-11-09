@@ -1,9 +1,5 @@
 import React from 'react';
-import { addScaleInput } from '../actions/index';
-
-/* interface RadioProps {
-	children: any
-} */
+import { addScaleInput } from '../../actions/index';
 
 export default class Radio extends React.Component{
 	constructor(props){
