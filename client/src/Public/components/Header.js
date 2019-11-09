@@ -1,7 +1,7 @@
 import React from 'react'
-import * as customApp from "./../config/sus_app_config.json"
+import * as customApp from "../../config/sus_app_config.json.js"
 
-export default class Main extends React.Component {
+export default class Header extends React.Component {
     render(){
         return (
             <div>

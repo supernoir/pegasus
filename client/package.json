@@ -1,30 +1,33 @@
 {
-  "name": "pegasus",
+  "name": "pegasus-client",
   "version": "0.0.1",
-  "description": "The System Usability Scale as a service",
+  "description": "PegaSUS Client - The System Usability Scale as a service",
   "main": "index.js",
   "scripts": {
-    "start-app": "webpack-dev-server -w",
-    "start-server": "node ./server",
+    "start": "webpack-dev-server -w",
     "build": "webpack -p",
     "test": "jest --watch"
   },
   "author": "Conny Kawohl",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "awesome-typescript-loader": "^5.0.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "express": "^4.17.1",
-    "nodemon": "^1.19.4",
+    "html-webpack-plugin": "^3.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.6",
-    "redis": "^2.8.0",
+    "react-router-dom": "^5.1.2",
     "redux": "^3.7.2",
     "source-map-loader": "^0.2.3",
     "tslint": "^5.9.1",
@@ -32,12 +35,5 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.3"
-  },
-  "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.18.0",
-    "html-webpack-plugin": "^3.2.0",
-    "webpack": "^2.2.1"
   }
 }
