@@ -20,7 +20,7 @@ const exampleData = [{
 	}
 }];
 
-export default class CalculateScore {
+class CalculateScore {
 	constructor(score){
 		this.score = score;
 
@@ -89,3 +89,7 @@ export default class CalculateScore {
 
 /* const sample = CalculateScore.prototype.deriveScore(exampleData);
 console.log(sample); */
+
+module.exports = {
+	CalculateScore
+}
