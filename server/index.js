@@ -12,6 +12,9 @@ const surveys = require("./api/surveys")
 const scores = require("./api/scores")
 const config = require("./api/config")
 
+// Initialize DB
+const db = require("./db")
+
 app.use(cors())
 app.use(bodyParser.json());
 
@@ -20,6 +23,7 @@ app.get("/", (req,res)=> {
         message: "PegaSUS -- API"
     })
 })
+
 
 /** API -- Surveys */
 surveys.getSurvey(app)
