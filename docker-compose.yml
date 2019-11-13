@@ -1,0 +1,24 @@
+version: '1'
+services:
+  web:
+    build: ./client .
+    ports:
+    - "8080:8080"
+    links:
+    - node
+  api:
+    build: ./server .
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/code
+    - logvolume01:/var/log
+    links:
+    - node
+    - postgres
+  node:
+    image: node
+  postgres:
+    image: postgres
+volumes:
+  logvolume01: {}
