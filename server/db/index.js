@@ -1,6 +1,13 @@
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize('postgres://localhost:5432/postgres');
 
+/*
+const connection = new Sequelize('postgres','user','pass',{
+    host: 'localhost',
+    dialect: 'postgres'
+})
+*/
+
 const Config = sequelize.define('config', {
     name: {
       type: Sequelize.STRING,
@@ -54,8 +61,7 @@ const Config = sequelize.define('config', {
                 value: 1
             }
         ]
-    }
-);
+    });
   });
 
 module.exports = {

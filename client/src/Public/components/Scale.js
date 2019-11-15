@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RadioRange from './RadioRange';
 import * as config from '../../config/susconfig.json';
 import { Box, Paper, Divider, Button } from '@material-ui/core';
 import { textAlign } from '@material-ui/system';
 
-export default class Scale extends React.Component {
-	constructor(){
-		super();
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.state = {
-			scales: []
-		}
-	}
-	handleSubmit (evt) {
+const Scale = ({store}) => {
+
+	const [scales, setScales] = useState([]);
+	const [value, setValue] = useState('');
+
+	console.log(value)
+
+	const handleSubmit = (evt) => {
 		evt.preventDefault();
 		//this.props.store.dispatch(compileScales(this.props.input));
 	}
 
-	render(){
 		return(
 
 			<form>
@@ -29,7 +27,7 @@ export default class Scale extends React.Component {
 											<b>{item.type}</b>
 											<p>{item.label}</p>
 											<Divider/>
-											<RadioRange range={config.range} context={item.type} store={this.props.store}/>
+											<RadioRange setValue={setValue} range={config.range} context={item.type} value={value}/>
 										</Box>
 									</Paper>
 								</Box>
@@ -40,7 +38,7 @@ export default class Scale extends React.Component {
 				<Box mb={1}>
 					<Paper>
 						<Box p={3} textAlign={"center"}>
-							<Button variant="contained" color="primary" id={'surveysubmit'} onClick={this.handleSubmit}>
+							<Button variant="contained" color="primary" id={'surveysubmit'} onClick={handleSubmit}>
 							Submit Survey
 							</Button>
 						</Box>
@@ -48,5 +46,6 @@ export default class Scale extends React.Component {
 				</Box>
 			</form>
 		);
-	}
 }
+
+export default Scale
