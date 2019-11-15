@@ -25,7 +25,7 @@ const RadioRange = ({range, context, value, setValue}) => {
 		const extendedRange = extendRange(range);
 		return (
 			<RadioGroup name={context} onChange={handleChange}>
-				<Box display="flex" flexDirection="row">
+				<Box display="flex" flexDirection="row" width="100%">
 					{extendedRange.map((val, index) => {
 						return <FormControlLabel key={index} checked={val === Number(selected)} value={val} control={<MUIRadio />} label={val} />
 						})
@@ -36,7 +36,7 @@ const RadioRange = ({range, context, value, setValue}) => {
 	};
 
 		return (
-			<FormControl>
+			<FormControl fullWidth>
 				<Box py={1} display="flex" justifyContent="space-between" alignItems="center">
 					<FormLabel>{'Strongly disagree'}</FormLabel>
 						{displayRadioRange()}
