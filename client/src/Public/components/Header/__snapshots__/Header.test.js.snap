@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component -- Header 1`] = `
+<div
+  className="MuiBox-root MuiBox-root-2"
+>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiBox-root MuiBox-root-30"
+    >
+      <h2
+        className="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
+      >
+        Example App
+      </h2>
+      <p
+        className="MuiTypography-root MuiTypography-h3 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+      >
+        An app example to showcase customizing React SUS usage
+      </p>
+      <p
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+      >
+        Please take part in our survey to make sure we can improve your experience!
+      </p>
+    </div>
+  </div>
+</div>
+`;
