@@ -3,35 +3,35 @@ import RadioRange from '../RadioRange'
 import * as config from '../../../config/susconfig.json'
 import {Box, Paper, Divider, Button} from '@material-ui/core'
 import {textAlign} from '@material-ui/system'
+import axios from 'axios'
+import {navigate} from '@reach/router'
 
 const Scale = ({}) => {
-	const [scales, setScales] = useState([])
-	const [value, setValue] = useState('')
-
-	console.log(value)
+	const baseUrl = 'http://localhost:3030'
+	const [survey, setSurvey] = useState([])
+	const [value, setValue] = useState({})
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
+		axios.post(baseUrl + '/survey', survey).then(() => navigate('/success')).catch(() => navigate('/failure'))
 	}
 
 	return (
 		<form>
-			<div className="sus-scale-container">
-				{config.scale.map((item, index) => {
-					return (
-						<Box mb={1} key={index}>
-							<Paper>
-								<Box p={3}>
-									<b>{item.type}</b>
-									<p>{item.label}</p>
-									<Divider />
-									<RadioRange setValue={setValue} range={config.range} context={item.type} value={value} />
-								</Box>
-							</Paper>
-						</Box>
-					)
-				})}
-			</div>
+			{config.scale.map((item, index) => {
+				return (
+					<Box mb={1} key={index}>
+						<Paper>
+							<Box p={3}>
+								<b>{item.type}</b>
+								<p>{item.label}</p>
+								<Divider />
+								<RadioRange setValue={setValue} setSurvey={setSurvey} range={config.range} context={item.type} value={value} survey={survey} />
+							</Box>
+						</Paper>
+					</Box>
+				)
+			})}
 			<Box mb={1}>
 				<Paper>
 					<Box p={3} textAlign={'center'}>
