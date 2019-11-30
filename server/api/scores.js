@@ -8,12 +8,16 @@ const getScores = app => {
 		}).then(result => {
 			let surveyCounts = result.count.map(c => c.count);
 			let totalSurveys = surveyCounts.reduce((a, b) => Number(a) + Number(b));
-			let averageSurveyScore = totalSurveys / surveyCounts.length;
+
+			let surveyScores = result.count.map(c => c.surveyScore);
+			let totalScores = surveyScores.reduce((a, b) => Number(a) + Number(b));
+			let averageSurveyScore = totalScores / surveyScores.length;
+			let averageScoreToTwoDecimalPoints = Math.round(averageSurveyScore * 100) / 100;
 
 			res.json({
 				surveys     : 1,
 				score       : 22,
-				scoreAvg    : averageSurveyScore,
+				scoreAvg    : averageScoreToTwoDecimalPoints,
 				totalSurveys: totalSurveys,
 				scales      : {
 					frequency  : 1.5,
