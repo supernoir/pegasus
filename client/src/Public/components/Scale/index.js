@@ -9,7 +9,6 @@ import {navigate} from '@reach/router'
 const Scale = ({}) => {
 	const baseUrl = 'http://localhost:3030'
 	const [survey, setSurvey] = useState([])
-	const [value, setValue] = useState({})
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
@@ -26,7 +25,7 @@ const Scale = ({}) => {
 								<b>{item.type}</b>
 								<p>{item.label}</p>
 								<Divider />
-								<RadioRange setValue={setValue} setSurvey={setSurvey} range={config.range} context={item.type} value={value} survey={survey} />
+								<RadioRange setSurvey={setSurvey} range={config.range} id={item.id} context={item.type} survey={survey} />
 							</Box>
 						</Paper>
 					</Box>

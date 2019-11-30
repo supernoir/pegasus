@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Box, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio as MUIRadio} from '@material-ui/core'
 
-const RadioRange = ({range, context, value, setValue, survey, setSurvey}) => {
+const RadioRange = ({range, id, context, survey, setSurvey}) => {
 	const [selected, setSelected] = useState('')
 
 	const extendRange = range => {
@@ -18,8 +18,7 @@ const RadioRange = ({range, context, value, setValue, survey, setSurvey}) => {
 	const handleChange = event => {
 		let nextVal = event.target.value
 		setSelected(nextVal)
-		setValue({type: context, value: nextVal})
-		setSurvey([value, ...survey])
+		setSurvey([{scales: {id: id, value: Number(nextVal)}}, ...survey])
 	}
 
 	const displayRadioRange = () => {

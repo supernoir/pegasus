@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize('postgres://localhost:5432/postgres');
 
 /*
@@ -8,62 +8,85 @@ const connection = new Sequelize('postgres','user','pass',{
 })
 */
 
-const Config = sequelize.define('config', {
-    name: {
-      type: Sequelize.STRING,
-      field: 'name'
-    },
-    scope: {
-      type: Sequelize.STRING,
-      field: 'scope'
-    }
-  }, {
-    freezeTableName: true
-  });
+const Config = sequelize.define(
+	'config',
+	{
+		name: {
+			type : Sequelize.STRING,
+			field: 'name'
+		},
+		scope: {
+			type : Sequelize.STRING,
+			field: 'scope'
+		}
+	},
+	{
+		freezeTableName: true
+	}
+);
 
-  const Survey = sequelize.define('survey', {
-      uniqueId : {
-        type: Sequelize.UUID
-      },
-      scale: {
-          type: Sequelize.JSON({
-              id: {
-                type: Sequelize.ENUM("frequency", "complexity", "easeofuse", "support", "integration", "consistency", "learnability", "functionality", "confidence", "uptake"),
-                field: 'survey_id'
-              },
-              value: {
-                type: Sequelize.NUMBER,
-                field: 'survey_val'
-              }
-          })
-      }
-  }, {
-    freezeTableName: true
-  });
+const Score = sequelize.define(
+	'score',
+	{
+		score : Sequelize.FLOAT,
+		scales: Sequelize.JSON({
+			frequency  : Sequelize.FLOAT,
+			complexity : Sequelize.FLOAT,
+			easeofuse  : Sequelize.FLOAT,
+			support    : Sequelize.FLOAT,
+			integration: Sequelize.FLOAT
+		})
+	},
+	{
+		freezeTableName: true
+	}
+);
 
-  Config.sync({force: true}).then(() => {
-    return Config.create({
-      name: 'Example',
-      scope: 'Landing Page'
-    });
-  });
+const Survey = sequelize.define(
+	'survey',
+	{
+		surveyId: {
+			type: Sequelize.UUID
+		},
+		surveyData: Sequelize.JSON({
+			scales: Sequelize.JSON({
+				id: {
+					type: Sequelize.NUMBER
+				},
+				value: {
+					type: Sequelize.NUMBER
+				}
+			})
+		}),
+		surveyScore: Sequelize.FLOAT
+	},
+	{
+		freezeTableName: true
+	}
+);
 
-  Survey.sync({force: true}).then(() => {
-    return Survey.create({
-        uniqueId: "b6da1a15-87bf-46f2-a49a-8d286341be99",
-        scale: [
-            {
-                id: "frequency",
-                value: 2
-            },
-            {
-                id: "complexity",
-                value: 1
-            }
-        ]
-    });
-  });
+Config.sync({ force: true }).then(() => {
+	return Config.create({
+		name : 'Example',
+		scope: 'Landing Page'
+	});
+});
+
+Score.sync().then(() => {
+	return Score.create({
+		score : 22,
+		scales: {
+			frequency  : 1.5,
+			complexity : 0.5,
+			easeofuse  : 1,
+			support    : 0,
+			integration: 1
+		}
+	});
+});
 
 module.exports = {
-    sequelize
-}
+	sequelize,
+	Survey,
+	Score
+};

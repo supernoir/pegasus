@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "license": "CC BY-SA (Attribution-ShareAlike), 2018",
   "default_language": "en-us",
-  "range": [1,5],
+  "range": [
+    1,
+    5
+  ],
   "scale": [
     {
       "id": 0,

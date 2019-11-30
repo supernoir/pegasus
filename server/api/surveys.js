@@ -1,45 +1,39 @@
 const score = require('./../services/CalculateScore');
+const { Survey } = require('./../db');
+const uuid = require('uuid');
 
 const getSurvey = app => {
 	app.get('/survey', (req, res) => {
-		let testSurvey = { frequency: 5, complexity: 3, easeofuse: 5, support: 3, integration: 5 };
-		res.json({
-			surveys: testSurvey
+		Survey.findAll().then(result => {
+			res.json({
+				surveys: result.map(survey => survey.dataValues)
+			});
 		});
 	});
 };
 
 const postSurvey = app => {
 	app.post('/survey', (req, res) => {
-		const exampleData = [
-			{
-				scales: {
-					id   : 1,
-					value: 2
-				}
-			},
-			{
-				scales: {
-					id   : 2,
-					value: 4
-				}
-			},
-			{
-				scales: {
-					id   : 3,
-					value: 1
-				}
-			}
-		];
-
-		console.log(req.body);
 		const calc = new score.CalculateScore();
-		const sample = calc.deriveScore(exampleData);
+		if (req.body && req.body.length > 0) {
+			let score = calc.deriveScore(req.body);
 
-		res.json({
-			score  : sample,
-			request: req.body
-		});
+			Survey.sync().then(() => {
+				return Survey.create({
+					surveyId   : uuid(),
+					surveyData : req.body,
+					surveyScore: score
+				});
+			});
+			res.json({
+				score: score
+			});
+		} else {
+			console.log({ score: 'No Score!' });
+			res.json({
+				score: null
+			});
+		}
 	});
 };
 

@@ -12,12 +12,12 @@ export default class Success extends React.Component {
 				<CssBaseline />
 				<Menu />
 				<Box p={4}>
-					<Header />
 					<Paper>
-						<Typography component="h2" variant="h2" align="center" color="textPrimary">
-							Thank you for your time
-						</Typography>
-
+						<Box p={3}>
+							<Typography component="h2" variant="h2" align="center" color="textPrimary">
+								Thank you for your time
+							</Typography>
+						</Box>
 					</Paper>
 				</Box>
 			</React.Fragment>

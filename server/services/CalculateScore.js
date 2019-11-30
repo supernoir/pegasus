@@ -7,21 +7,23 @@
   6. SUS scores have a range of 0 to 100.
 */
 
-
-const exampleData = [{
-	scales: {
-		id   : 1,
-		value: 2
+const exampleData = [
+	{
+		scales: {
+			id   : 1,
+			value: 2
+		}
+	},
+	{
+		scales: {
+			id   : 2,
+			value: 4
+		}
 	}
-},{
-	scales: {
-		id   : 2,
-		value: 4
-	}
-}];
+];
 
 class CalculateScore {
-	constructor(score){
+	constructor(score) {
 		this.score = score;
 
 		this.calculateOddValue = this.calculateOddValue.bind(this);
@@ -32,43 +34,53 @@ class CalculateScore {
 		this.deriveScore = this.deriveScore.bind(this);
 	}
 
-	calculateOddValue(oddNumber){
+	calculateOddValue(oddNumber) {
 		let num = parseInt(oddNumber);
 		return num - 1;
 	}
 
-	calculateEvenValue(evenNumber){
+	calculateEvenValue(evenNumber) {
 		let num = parseInt(evenNumber);
 		return 5 - num;
 	}
 
 	prepareScores(arr) {
 		let tempArray = [];
-		arr.map((item) => {
-			if (item.scales.id % 2 === 0){
-				tempArray.push(Object.assign({},{
-					value: this.calculateEvenValue(item.scales.value),
-					id   : item.scales.id
-				}));
+		arr.map(item => {
+			if (item.scales.id % 2 === 0) {
+				tempArray.push(
+					Object.assign(
+						{},
+						{
+							value: this.calculateEvenValue(item.scales.value),
+							id   : item.scales.id
+						}
+					)
+				);
 			} else {
-				tempArray.push(Object.assign({},{
-					value: this.calculateOddValue(item.scales.value),
-					id   : item.scales.id
-				}));
+				tempArray.push(
+					Object.assign(
+						{},
+						{
+							value: this.calculateOddValue(item.scales.value),
+							id   : item.scales.id
+						}
+					)
+				);
 			}
 		});
 		return tempArray;
 	}
 
-	getSumTotal (arr) {
+	getSumTotal(arr) {
 		let consolidatedArray = [];
-		arr.map((item => {
+		arr.map(item => {
 			consolidatedArray.push(item.value);
-		}));
+		});
 		return consolidatedArray;
 	}
 
-	compoundTotal (arr) {
+	compoundTotal(arr) {
 		if (arr.length !== 0) {
 			const reducer = (accumulator, currentValue) => accumulator + currentValue;
 			let compoundedValue = arr.reduce(reducer);
@@ -78,18 +90,11 @@ class CalculateScore {
 		}
 	}
 
-	deriveScore (arr) {
-		return this.compoundTotal(
-			this.getSumTotal(
-				this.prepareScores(
-					arr
-				)));
+	deriveScore(arr) {
+		return this.compoundTotal(this.getSumTotal(this.prepareScores(arr)));
 	}
 }
 
-/* const sample = CalculateScore.prototype.deriveScore(exampleData);
-console.log(sample); */
-
 module.exports = {
 	CalculateScore
-}
+};
