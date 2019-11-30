@@ -1,5 +1,5 @@
 import React from 'react'
-import ScaleInput from './Public/ScaleInput/index'
+import Survey from './Public/Survey/index'
 import Admin from './Restricted/Admin/index'
 import Dashboard from './Restricted/Dashboard/index'
 import Success from './Public/Success/index'
@@ -10,7 +10,7 @@ export default class App extends React.Component {
 		return (
 			<div>
 				<Router>
-					<ScaleInput path="/" />
+					<Survey path="/" />
 					<Success path="/success" />
 					<Admin path="/admin" />
 					<Dashboard path="/dashboard" />

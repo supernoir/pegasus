@@ -5,7 +5,7 @@ import {Footer} from '../../base/Footer'
 import {Header} from './../components/Header/index'
 import Scale from '../components/Scale/index'
 
-export default class ScaleInput extends React.Component {
+export default class Survey extends React.Component {
 	render() {
 		return (
 			<React.Fragment>

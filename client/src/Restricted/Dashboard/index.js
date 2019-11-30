@@ -7,11 +7,15 @@ import {BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recha
 
 const Dashboard = () => {
 	const [score, setScore] = useState('-')
+	const [scoreAvg, setScoreAvg] = useState('-')
+	const [totalSurveys, setTotalSurveys] = useState('-')
 	const [scales, setScales] = useState([])
 
 	useEffect(() => {
 		axios('http://localhost:3030/scores').then(result => {
 			setScore(result.data.score)
+			setScoreAvg(result.data.scoreAvg)
+			setTotalSurveys(result.data.totalSurveys)
 
 			let arr = []
 
@@ -33,13 +37,28 @@ const Dashboard = () => {
 						<Paper>
 							<Box p={2} display="flex" flexDirection="row" alignItems="center" justifyContent="center">
 								<Typography variant="h2" color="textSecondary">
-									Current Score:
+									Number of Surveys:
 								</Typography>
 								<Box mx={1}>
 									<Divider orientation="vertical" />
 								</Box>
 								<Typography variant="h2" color="textPrimary">
-									{score !== void 0 ? score : '-'}
+									{totalSurveys !== void 0 ? totalSurveys : '-'}
+								</Typography>
+							</Box>
+						</Paper>
+					</Grid>
+					<Grid item xs={6}>
+						<Paper>
+							<Box p={2} display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+								<Typography variant="h2" color="textSecondary">
+									Score Average
+								</Typography>
+								<Box mx={1}>
+									<Divider orientation="vertical" />
+								</Box>
+								<Typography variant="h2" color="textPrimary">
+									{scoreAvg !== void 0 ? scoreAvg : '-'}
 								</Typography>
 							</Box>
 						</Paper>
