@@ -1,11 +1,33 @@
 const { Survey, sequelize } = require('./../db');
 
 const getAveragePerScale = scales => {
-	let reducedScales = [];
-	scales.map(scale => {
-		console.log(scale);
-	});
+	let flattenedScales = scales.reduce((acc, val) => acc.concat(val[0].scales), []);
+
+	let compiledScales = flattenedScales.reduce((reducedScales, scale) => {
+		if (scale.id in reducedScales) {
+			reducedScales[scale.id].count++;
+			reducedScales[scale.id].totalValue += scale.value;
+			reducedScales[scale.id].averageValue = Math.round(reducedScales[scale.id].totalValue / reducedScales[scale.id].count * 100) / 100;
+		} else {
+			reducedScales[scale.id] = { count: 1, totalValue: scale.value, averageValue: scale.value };
+		}
+		return reducedScales;
+	}, []);
+	return compiledScales;
 };
+
+const scaleTranslation = [
+	'Frequency',
+	'Complexity',
+	'Ease of Use',
+	'Support',
+	'Integration',
+	'Consistency',
+	'Learnability',
+	'Encumbrance',
+	'Confidence',
+	'Uptake'
+];
 
 const getScores = app => {
 	app.get('/scores/scales', (req, res) => {
@@ -13,15 +35,14 @@ const getScores = app => {
 			attributes: ['surveyData']
 		}).then(result => {
 			const allSurveys = result.map(entry => entry.dataValues.surveyData);
-			getAveragePerScale(allSurveys);
+			let averagedSurveys = getAveragePerScale(allSurveys);
+			let compiledSurveys = scaleTranslation.map((scale, index) => {
+				return { [scale]: averagedSurveys[index] ? averagedSurveys[index].averageValue : null };
+			});
+			let flattenedSurveys = Object.assign({}, ...compiledSurveys.map(item => item));
+
 			res.json({
-				scales: {
-					frequency  : 1.5,
-					complexity : 0.5,
-					easeofuse  : 1,
-					support    : 0,
-					integration: 1
-				}
+				scales: flattenedSurveys
 			});
 		});
 	});
