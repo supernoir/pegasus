@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component -- Success 1`] = `
+Array [
+  <header
+    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionRelative MuiAppBar-colorPrimary"
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h6
+        className="MuiTypography-root MuiTypography-h6 MuiTypography-colorInherit MuiTypography-noWrap"
+      >
+        PegaSUS
+      </h6>
+      <nav>
+        <a
+          aria-current="page"
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          href="/"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Survey
+          </span>
+        </a>
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          href="/dashboard"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Dashboard
+          </span>
+        </a>
+        <a
+          aria-disabled={false}
+          className="MuiButtonBase-root MuiButton-root MuiButton-text"
+          href="/admin/"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Administration
+          </span>
+        </a>
+      </nav>
+    </div>
+  </header>,
+  <div
+    className="MuiBox-root MuiBox-root-103"
+  >
+    <div
+      className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        className="MuiBox-root MuiBox-root-104"
+      >
+        <h2
+          className="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary MuiTypography-alignCenter"
+        >
+          Thank you for your time
+        </h2>
+      </div>
+    </div>
+  </div>,
+]
+`;

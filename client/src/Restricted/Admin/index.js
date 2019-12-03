@@ -3,7 +3,6 @@ import {  Grid, CssBaseline, Box, Paper, Typography, Divider, Table, TableBody, 
 import { Menu } from "../../base/Menu"
 import { Footer } from "../../base/Footer"
 import axios from "axios"
-import Chart from 'react-google-charts';
 
 const Dashboard = () => {
 
