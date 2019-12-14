@@ -5,6 +5,7 @@ import {Menu} from '../../base/Menu'
 import {Footer} from '../../base/Footer'
 import axios from 'axios'
 import {Loader} from '../../Public/components/Loader'
+import {Link} from '@reach/router'
 
 const Dashboard = () => {
 	const [scoreAvg, setScoreAvg] = useState('-')
@@ -112,7 +113,9 @@ const Dashboard = () => {
 											return (
 												<TableRow>
 													<TableCell>
-														{survey.surveyId}
+														<Link to={'/detail/' + survey.surveyId}>
+															{survey.surveyId}
+														</Link>
 													</TableCell>
 													<TableCell align="right">{survey.surveyScore}</TableCell>
 													<TableCell align="right">{survey.createdAt}</TableCell>

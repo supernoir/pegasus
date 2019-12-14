@@ -12,6 +12,20 @@ const getSurvey = app => {
 	});
 };
 
+const getSpecificSurvey = app => {
+	app.get('/survey/:id', (req, res) => {
+		Survey.findOne({
+			where: {
+				surveyId: req.params.id
+			}
+		}).then(result => {
+			res.json({
+				survey: result.dataValues
+			});
+		});
+	});
+};
+
 const postSurvey = app => {
 	app.post('/survey', (req, res) => {
 		const calc = new score.CalculateScore();
@@ -39,5 +53,6 @@ const postSurvey = app => {
 
 module.exports = {
 	getSurvey,
+	getSpecificSurvey,
 	postSurvey
 };

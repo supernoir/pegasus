@@ -37,7 +37,7 @@ const getScores = app => {
 			const allSurveys = result.map(entry => entry.dataValues.surveyData);
 			let averagedSurveys = getAveragePerScale(allSurveys);
 			let compiledSurveys = scaleTranslation.map((scale, index) => {
-				return { [scale]: averagedSurveys[index] ? averagedSurveys[index].averageValue : null };
+				return { [scale]: averagedSurveys[index] ? averagedSurveys[index].averageValue : 0 };
 			});
 			let flattenedSurveys = Object.assign({}, ...compiledSurveys.map(item => item));
 

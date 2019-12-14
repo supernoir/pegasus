@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 
 /** API -- Surveys */
 surveys.getSurvey(app);
+surveys.getSpecificSurvey(app);
 surveys.postSurvey(app);
 
 /** API -- Scores */
